@@ -19,6 +19,35 @@ SSD1306 OLED Display (I2C)
 2 LED's
 RFID Reader (MFRC522)
 
+##🔌Wiring
+
+*HC-SR04 Ultrasonic Sensor
+VCC-->VIN
+GND-->GND
+TRIG-->D12
+ECHO-->D13
+
+*SG90 Micro Servo
+VCC(red)-->VIN
+GND(brown)-->GND
+PWM (yellow)-->D14
+
+*RFID Reader (MFRC522)
+VCC-->3.3V
+GND-->GND
+MISO-->D19
+MOSI-->D23
+SCK-->D18
+SDA-->D5
+RST-->D27
+
+*SSD1306 OLED Display (I2C)
+
+VCC-->3.3V
+GND-->GND
+SCL-->D22
+SDA-->D21
+
 
 ## 🔧 Challenges
 Managing the high number of pins required by SPI (RFID), I2C (OLED), PWM (Servo), and digital I/O required careful mapping to avoid conflicting with the ESP32 strapping pins.
