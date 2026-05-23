@@ -28,6 +28,8 @@ MFRC522 rfid(SS_PIN, RST_PIN);
 long duration; 
 int distance; 
 Servo gateServo;
+int fee=50;
+int amount =100;
 
 //HELPER FUNCTIONSSS
 //Reading distance from ultrasonic sensor
@@ -77,17 +79,19 @@ bool detectCard()
     }
 
     // Correct card
-    if (match)
+    if (match && amount>=fee)
     {
+amount=amount-fee;
 display.clearDisplay();
  display.setCursor(24,32);     
 display.println("ACCESS GRANTED");
 display.display();
-        Serial.println("Access Granted");
+Serial.println("Access Granted");
 
         rfid.PICC_HaltA();
 
         return true;
+    
     }
 
     // Wrong card
@@ -154,7 +158,7 @@ void redlight()
 
 void setup() {
   Serial.begin(115200);
-
+amount=100;
  SPI.begin(18, 19, 23, 5);
   rfid.PCD_Init();
 
@@ -196,6 +200,7 @@ if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
 
 void loop() {
 
+
 distance=READINGdistance();
 
 if (distance<0)
@@ -212,6 +217,10 @@ if (distance<=10 && waitingForCard==false)
   display.clearDisplay();
  display.setCursor(34,32);     
 display.println("TAP CARD");
+display.display();
+
+ display.setCursor(0,0);     
+display.println( amount);
 display.display();
 }
 
