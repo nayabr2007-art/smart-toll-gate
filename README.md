@@ -19,8 +19,6 @@ SSD1306 OLED Display (I2C)
 2 LED's
 RFID Reader (MFRC522)
 
-## 📐 Link to Wokwi
-*(Paste your Wokwi simulation link here once you create it!)*
 
 ## 🔧 Challenges
 Managing the high number of pins required by SPI (RFID), I2C (OLED), PWM (Servo), and digital I/O required careful mapping to avoid conflicting with the ESP32 strapping pins.
